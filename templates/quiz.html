@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome</h1>
+    {% if score %}
+    <h1>SCORE:{{score}}</h1>
+    {% endif %}
+    <form action="/quiz" method="post">
+        <input type="hidden" name="quiz_id" value="{{quiz_id}}">
+    {% for question in questions %}
+    <h2 style="color:red">{{question[1]}}</h2>
+    <label >
+        {{question[2]}}
+        <input type="radio" value="a" name="answer,{{question[0]}}" >
+    </label>
+    <label >
+        {{question[3]}}
+        <input type="radio" value="b" name="answer,{{question[0]}}" >
+    </label>
+    {% endfor %}
+    <button>Submit</button>
+    </form>
+</body>
+</html>
